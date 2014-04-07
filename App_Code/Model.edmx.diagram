@@ -5,9 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6c3ffb8795214c7ab05c5e76ab64bdb2" Name="Diagram1">
-        <EntityTypeShape EntityType="DB_14781_schoolsModel.tblAttribute" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_14781_schoolsModel.tblLocation" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_14781_schoolsModel.tblPlace" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_14781_schoolsModel.tblUnitsGP" Width="1.5" PointX="7.125" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>

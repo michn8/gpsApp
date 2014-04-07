@@ -14,7 +14,7 @@ var geoLoad = true;
 var curPosition;
 var mapLoad = true;
 var myOptions;
-var serviceUrl = '../WebService.asmx/';
+var serviceUrl = 'WebService.asmx/';
 
 var recordTemplate;
 var record;
@@ -114,9 +114,9 @@ function doInitialize() {
 
  
     //DoLocationTimer(30000);
-    DoIncidentTimer(20000);
-    DoUnitsTimer(240000);
-    DoUnitsTimerReportIn(300000)
+  //  DoIncidentTimer(20000);
+  //  DoUnitsTimer(240000);
+ //   DoUnitsTimerReportIn(300000)
  //  getCurLocation();
 
    
@@ -194,8 +194,8 @@ function doInitialize() {
               //  animation: google.maps.Animation.DROP
             });
             doInitialize();
-            getUnitsInField();
-            getLocateIncidentsCall();
+         //   getUnitsInField();
+         //   getLocateIncidentsCall();
             SaveMainCall('2');
             mapLoad = false;
         }

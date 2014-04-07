@@ -6,50 +6,8 @@
     <edmx:StorageModels>
     <Schema Namespace="DB_14781_schoolsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="DB_14781_schoolsModelStoreContainer">
-          <EntitySet Name="tblAttributes" EntityType="DB_14781_schoolsModel.Store.tblAttributes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblLocation" EntityType="DB_14781_schoolsModel.Store.tblLocation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblPlaces" EntityType="DB_14781_schoolsModel.Store.tblPlaces" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblUnitsGPS" EntityType="DB_14781_schoolsModel.Store.tblUnitsGPS" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
-        <EntityType Name="tblAttributes">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="itemType" Type="varchar" MaxLength="50" />
-          <Property Name="name" Type="varchar" MaxLength="100" />
-          <Property Name="Latitude" Type="float" />
-          <Property Name="Longitude" Type="float" />
-          <Property Name="sub1" Type="varchar" MaxLength="200" />
-          <Property Name="sub2" Type="varchar" MaxLength="50" />
-          <Property Name="sub3" Type="varchar" MaxLength="50" />
-          <Property Name="sub4" Type="varchar" MaxLength="50" />
-          <Property Name="sub5" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tblLocation">
-          <Key>
-            <PropertyRef Name="LocationID" />
-          </Key>
-          <Property Name="LocationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="LocationDescription" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
-          <Property Name="Town" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="County" Type="nvarchar" MaxLength="50" />
-          <Property Name="Postcode" Type="nvarchar" Nullable="false" MaxLength="10" />
-          <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Latitude" Type="decimal" Nullable="false" Precision="10" Scale="7" />
-          <Property Name="Longitude" Type="decimal" Nullable="false" Precision="10" Scale="7" />
-        </EntityType>
-        <EntityType Name="tblPlaces">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Latitude" Type="float" />
-          <Property Name="Longitude" Type="float" />
-          <Property Name="Description" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="tblUnitsGPS">
           <Key>
             <PropertyRef Name="id" />
@@ -80,9 +38,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="DB_14781_schoolsModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DB_14781_schoolsEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
-          <EntitySet Name="tblAttributes" EntityType="DB_14781_schoolsModel.tblAttribute" />
-          <EntitySet Name="tblLocations" EntityType="DB_14781_schoolsModel.tblLocation" />
-          <EntitySet Name="tblPlaces" EntityType="DB_14781_schoolsModel.tblPlace" />
           <FunctionImport Name="GetNearbyLocations">
             <Parameter Name="Distance" Mode="In" Type="Int32" />
             <Parameter Name="Latitude" Mode="In" Type="Double" />
@@ -95,45 +50,6 @@
           </FunctionImport>
           <EntitySet Name="tblUnitsGPS" EntityType="DB_14781_schoolsModel.tblUnitsGP" />
         </EntityContainer>
-        <EntityType Name="tblAttribute">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="itemType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="Latitude" Type="Double" />
-          <Property Name="Longitude" Type="Double" />
-          <Property Name="sub1" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="sub2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="sub3" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="sub4" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="sub5" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="tblLocation">
-          <Key>
-            <PropertyRef Name="LocationID" />
-          </Key>
-          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Name="LocationDescription" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Address1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Address2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Town" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="County" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Latitude" Type="Decimal" Nullable="false" Precision="10" Scale="7" />
-          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="10" Scale="7" />
-        </EntityType>
-        <EntityType Name="tblPlace">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Name="Latitude" Type="Double" />
-          <Property Name="Longitude" Type="Double" />
-          <Property Name="Description" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-        </EntityType>
         <EntityType Name="tblUnitsGP">
           <Key>
             <PropertyRef Name="id" />
@@ -155,48 +71,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DB_14781_schoolsModelStoreContainer" CdmEntityContainer="DB_14781_schoolsEntities">
-          <EntitySetMapping Name="tblAttributes">
-            <EntityTypeMapping TypeName="DB_14781_schoolsModel.tblAttribute">
-              <MappingFragment StoreEntitySet="tblAttributes">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="itemType" ColumnName="itemType" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="sub1" ColumnName="sub1" />
-                <ScalarProperty Name="sub2" ColumnName="sub2" />
-                <ScalarProperty Name="sub3" ColumnName="sub3" />
-                <ScalarProperty Name="sub4" ColumnName="sub4" />
-                <ScalarProperty Name="sub5" ColumnName="sub5" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblLocations">
-            <EntityTypeMapping TypeName="DB_14781_schoolsModel.tblLocation">
-              <MappingFragment StoreEntitySet="tblLocation">
-                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-                <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
-                <ScalarProperty Name="Address1" ColumnName="Address1" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Town" ColumnName="Town" />
-                <ScalarProperty Name="County" ColumnName="County" />
-                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblPlaces">
-            <EntityTypeMapping TypeName="DB_14781_schoolsModel.tblPlace">
-              <MappingFragment StoreEntitySet="tblPlaces">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetNearbyLocations" FunctionName="DB_14781_schoolsModel.Store.GetNearbyLocations" />
           <FunctionImportMapping FunctionImportName="proc_Location_List" FunctionName="DB_14781_schoolsModel.Store.proc_Location_List" />
           <EntitySetMapping Name="tblUnitsGPS">

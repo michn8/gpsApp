@@ -25,118 +25,6 @@ public class WebService : System.Web.Services.WebService {
     }
 
        [WebMethod]
-    public List<tblAttribute> GetLocations() {
-        //    public string GetNearbyLocations(double latitude, double longitude) {
-        //   WebOperationContext.Current.OutgoingResponse.Headers.Add("Cache-Control", "no-cache"); WebOperationContext.Current.OutgoingResponse.Headers.Add("Pragma", "no-cache");
-        //    List<tblPlace> locations = new List<tblPlace>();
-        //    int distance = 20; // Miles
-        using (DB_14781_schoolsEntities context = new DB_14781_schoolsEntities()) {
-
-            var query = (from t in context.tblAttributes
-                         where t.sub2 == "Tampa"
-                         select t).ToList();
-            //    var nearby = context.GetNearbyLocations(distance, latitude, longitude);
-            //    foreach (var near in nearby)
-            //        locations.Add(new tblPlace() { Description = near.Description, Latitude = near.Latitude, Longitude = near.Longitude });
-            //}
-            return query;
-        }
-    }
-
-
-
-       [WebMethod]
-       public List<tblAttribute> getItem(string recordId) {
-           // public string getSubByCatId(string recordId) {
-
-           var id = Convert.ToInt32(recordId);
-
-           using (DB_14781_schoolsEntities context = new DB_14781_schoolsEntities()) {
-               var units = (from a in context.tblAttributes
-                            where a.id == id
-         
-                            select a);
-
-               var ret = units.ToList();
-
-               //  string json = JsonConvert.SerializeObject(ret);
-               //var jsonSerialiser = new JavaScriptSerializer();
-               //string json = jsonSerialiser.Serialize(ret);
-
-               return ret;
-
-           }
-           // return null;
-
-       }
-
-       [WebMethod]
-       public List<tblAttribute> SaveMain(string recordId, string fldName, string newValue) {
-
-           int EventId;
-
-           int recId = Convert.ToInt32(recordId);
-
-           using (DB_14781_schoolsEntities context = new DB_14781_schoolsEntities()) {
-               // incidentId = System.Convert.ToInt32(record.incident_id);
-
-               if (recId > 0) {
-                   //save record
-
-
-                   var query = (from c in context.tblAttributes
-                                where c.id == recId
-                                select c);
-
-
-                           foreach (var editRecord in query) {
-
-                               if (fldName == "Latitude") {
-                                   double dblVal = System.Convert.ToDouble(newValue);
-
-                                   editRecord.GetType().GetProperty(fldName).SetValue(editRecord, dblVal, null);
-                      
-
-                               } else if (fldName == "Longitude") {
-                                   double dblVal = System.Convert.ToDouble(newValue);
-                                   editRecord.GetType().GetProperty(fldName).SetValue(editRecord, dblVal, null);
-                          
-                               } else {
-                                   editRecord.GetType().GetProperty(fldName).SetValue(editRecord, newValue, null);
-                         
-                               }
-
-                           }
-
-
-                           try {
-                               context.SaveChanges();
-                           } catch {
-                               throw new Exception("Could not save changes.");
-                           }
-                           var items = query.ToList();
-                           return items;
-
-
-               }
-
-                   else
-                   {
-                       //do add
-                       return null;
-                   }
-
-
-
-
-               }
-
-
-       }
-
-
-
-       [WebMethod]
        public List<tblUnitsGP> getGPSStub(string recordId) {
            // public string getSubByCatId(string recordId) {
 
@@ -194,17 +82,7 @@ public class WebService : System.Web.Services.WebService {
                            newRec.GetType().GetProperty(field).SetValue(newRec, dt, null);
 
                        } 
-                       
-                       //else if (field == "code") {
 
-                       ////    var ftype = field.GetType();
-                       //    var newVal = record.GetType().GetProperty(field).GetValue(record, null);
-                       //   // float addVal = Convert.t
-                       //   // var newVal = intSite;
-
-                       //    newRec.GetType().GetProperty(field).SetValue(newRec, newVal, null);
-
-                       //}
                        
                        else {
 

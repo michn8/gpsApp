@@ -28,21 +28,5 @@ public class WcfDataService : DataService<DB_14781_schoolsEntities> {
     }
 
 
-    [WebGet]
-public List<tblPlace> GetLocations() {
-        //    public string GetNearbyLocations(double latitude, double longitude) {
-     //   WebOperationContext.Current.OutgoingResponse.Headers.Add("Cache-Control", "no-cache"); WebOperationContext.Current.OutgoingResponse.Headers.Add("Pragma", "no-cache");
-    //    List<tblPlace> locations = new List<tblPlace>();
-    //    int distance = 20; // Miles
-        using (DB_14781_schoolsEntities context = new DB_14781_schoolsEntities()) {
 
-        var query = (from t in context.tblPlaces
-                 select t).ToList();
-            //    var nearby = context.GetNearbyLocations(distance, latitude, longitude);
-            //    foreach (var near in nearby)
-            //        locations.Add(new tblPlace() { Description = near.Description, Latitude = near.Latitude, Longitude = near.Longitude });
-            //}
-        return query;
-        }
-    }
 }

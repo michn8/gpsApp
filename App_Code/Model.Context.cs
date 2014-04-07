@@ -26,9 +26,6 @@ public partial class DB_14781_schoolsEntities : DbContext
         throw new UnintentionalCodeFirstException();
     }
 
-    public DbSet<tblAttribute> tblAttributes { get; set; }
-    public DbSet<tblLocation> tblLocations { get; set; }
-    public DbSet<tblPlace> tblPlaces { get; set; }
     public DbSet<tblUnitsGP> tblUnitsGPS { get; set; }
 
     public virtual int GetNearbyLocations(Nullable<int> distance, Nullable<double> latitude, Nullable<double> longitude)
