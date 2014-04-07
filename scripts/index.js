@@ -14,7 +14,7 @@ var geoLoad = true;
 var curPosition;
 var mapLoad = true;
 var myOptions;
-var serviceUrl = 'WebService.asmx/';
+var serviceUrl = 'http://michb.net/resp/gpsApp/WebService.asmx/';
 
 var recordTemplate;
 var record;
