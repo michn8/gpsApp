@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Safari iOS - apps only -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Chrome for Android - NEW! -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="images/brand.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <title>Bootstrap Map JS - Web Map</title>
+
+    <!-- Bootstrap core CSS -->
+<!--    <link href="../bootstrap_v3/dist/css/bootstrap.css" rel="stylesheet">-->
+
+    <!-- Custom styles for this template -->
+<!--    <link href="style.css" rel="stylesheet">-->
+
+    <!-- Bootstrap-map-js -->
+<!--    <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">   -->
+<!--    <link rel="stylesheet" type="text/css" href="../src/css/bootstrapmap.css">   -->
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="style.css" rel="stylesheet" />
+
+    <style>
+         html { 
+    height: 100%;
+}
+body { 
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
+}
+#map-canvas { 
+    height: 400px;
+    width:100%;
+}
+
+
+    </style>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD9uiyFbXfbSOsY6umTUtl4_rvl_LkQKxE&sensor=false&libraries=places"></script>
+
+<!--            <script src="scripts/globals.js"></script>
+<script src="scripts/timers.js"></script>-->
+
+
+
+      <script type="text/JavaScript">
+
+          //function autoRefresh(timeoutPeriod) {
+          //    //  alert("refrewsh");
+          //    if (1 == 1) {
+          //        setTimeout("location.reload(true);", timeoutPeriod);
+          //    }
+          //    else
+          //    {
+          //        autoRefresh(250000);
+          //    }
+
+          //}
+
+
+
+
+</script>
+  </head>
+
+   <body>
+    
+    <!--<a class="hidden-xs" href="https://github.com/Esri/bootstrap-map-js"><img style="position: absolute; top: 50; right: 0; border: 0; width:100px" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>-->
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><img class="navbar-brand-image" src="images/brand.png">Bootstrap Map JS</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+
+            <li class="active"><a href="index.html">Web Map</a></li>
+
+ 
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container main">
+    <div class="modal fade" id="enter-incident" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title">Enter New Incident</h4> 
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <div id="Div2"></div>
+                  </div> 
+                  <form id="Form1" class="form">
+                  
+    <div class="form-group">
+
+                          <div class="form-group">
+        <label for="title" class="col-med-2 control-label">Title</label>
+        <div class="col-med-6">
+            <input type="text" style="height:2em;font-size:2em" class="form-control" id="Text2" placeholder="..." />
+        </div>
+    </div><br />
+                          <div class="form-group">
+        <label for="title" class="col-med-2 control-label">Title</label>
+        <div class="col-med-6">
+            <input type="text" style="height:2em;font-size:2em" class="form-control" id="Text3" placeholder="..." />
+        </div>
+    </div><br />
+
+                          <div class="form-group">
+        <label for="title" class="col-med-2 control-label">Title</label>
+        <div class="col-med-6">
+            <input type="text" style="height:2em;font-size:2em" class="form-control" id="Text1" placeholder="..." />
+        </div>
+    </div><br />
+
+                                  <div class="form-group">
+        <label for="title" class="col-med-2 control-label">Title</label>
+        <div class="col-med-6">
+            <input type="text" style="height:2em;font-size:2em" class="form-control" id="Text4" placeholder="..." />
+        </div>
+    </div><br />
+
+    </div><br />
+
+                                                                              <div class="form-group">
+          <button id="Button3" type="button" class="btn btn-success btn-fixed" data-dismiss="modal"> Go </button>
+ <button id="Button4" type="submit" class="btn btn-default btn-fixed" data-dismiss="modal">Dismiss</button><br />
+
+    </div>
+
+                  </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+        <div class="page-header hidden-xs">
+          <div class="row">
+            <div class="col-xs-7" style="margin-bottom: 0px;">
+              <h2>Web Maps</h2>
+              <p class="lead">Google Maps with Bootstrap</p>
+                        
+            </div>
+            <div class="col-xs-5">
+              <div class="form-group pull-right" style="margin-top: 35px;">
+               
+
+                  <p style="display:none">
+       <label for="search_new_places">Search:</label> 
+        <input type="text" id="search_new_places"/>     
+ 
+        <label for="location">Location name: </label> 
+        <input type="text" id="location" list="existing_locations"/>
+        <datalist id="existing_locations">
+            
+        </datalist>        
+
+    <input type="button" id="save" value="save"/>
+    <input type="button" id="plot" value="plot marker"/>
+         <input type="button" id="Button1" onclick="geoloc()" value="geo Loc"/>
+     <div id="Div1"></div>     <button onclick="stopWatch()">
+
+        </button></p>
+
+              </div>
+            </div>          
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="row">
+        <div class="col-sm-12">
+         <div class="panel-group" id="accordion0">
+            <div class="panel panel-default">
+         <!--     <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion0" href="#collapseOne0">
+                    Title
+                  </a>
+                </h4>
+              </div>-->
+              <div id="collapseOne0" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <h4 id="mapTitle"></h4>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="panel-group" id="accordion1">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
+                    Legend
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne1" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div id="mapLegendDiv"></div>
+
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+            <ul id="mainlistviewLegacy" class="ui-listview">
+
+<!--                <li ><table><tr><td style="vertical-align:top;width:25%"><img src="275.png" style="padding-top:16px; padding-left:10px; width:50px; height:50px" class="ui-li-thumb"></td><td style="width:50%"><h3 class="ui-li-heading">I-275 NB</h3><p class="ui-li-desc"><strong>Before Bearss Ave</strong></p><p class="ui-li-desc"></p><div style="color:#FF9900">Disabled Vehicle</div><p class="ui-li-desc"></p></td><td style="width:25%"><p class="ui-li-aside ui-li-desc"><strong>Evt: 381094<br>RR:112</strong><br>3/30/14<br>17:53</p></td></tr></table></li>
+                  <li ><table><tr><td style="vertical-align:top;width:25%"><img src="275.png" style="padding-top:16px; padding-left:10px; width:50px; height:50px" class="ui-li-thumb"></td><td style="width:50%"><h3 class="ui-li-heading">I-275 NB</h3><p class="ui-li-desc"><strong>Before Bearss Ave</strong></p><p class="ui-li-desc"></p><div style="color:#FF9900">Disabled Vehicle</div><p class="ui-li-desc"></p></td><td style="width:25%"><p class="ui-li-aside ui-li-desc"><strong>Evt: 381094<br>RR:112</strong><br>3/30/14<br>17:53</p></td></tr></table></li>
+                  <li ><table><tr><td style="vertical-align:top;width:25%"><img src="275.png" style="padding-top:16px; padding-left:10px; width:50px; height:50px" class="ui-li-thumb"></td><td style="width:50%"><h3 class="ui-li-heading">I-275 NB</h3><p class="ui-li-desc"><strong>Before Bearss Ave</strong></p><p class="ui-li-desc"></p><div style="color:#FF9900">Disabled Vehicle</div><p class="ui-li-desc"></p></td><td style="width:25%"><p class="ui-li-aside ui-li-desc"><strong>Evt: 381094<br>RR:112</strong><br>3/30/14<br>17:53</p></td></tr></table></li>
+                  <li ><table><tr><td style="vertical-align:top;width:25%"><img src="275.png" style="padding-top:16px; padding-left:10px; width:50px; height:50px" class="ui-li-thumb"></td><td style="width:50%"><h3 class="ui-li-heading">I-275 NB</h3><p class="ui-li-desc"><strong>Before Bearss Ave</strong></p><p class="ui-li-desc"></p><div style="color:#FF9900">Disabled Vehicle</div><p class="ui-li-desc"></p></td><td style="width:25%"><p class="ui-li-aside ui-li-desc"><strong>Evt: 381094<br>RR:112</strong><br>3/30/14<br>17:53</p></td></tr></table></li>
+
+                    -->
+                    <!--<li id="listitem" onclick="doArrival(381085,&quot;Disabled Vehicle:I-275 NB At The Hump&quot;,&quot;711&quot;)" class="ui-li ui-li-static ui-btn-up-c ui-li-has-thumb ui-first-child"><p class="ui-li-aside ui-li-desc"><strong>Evt: 381085<br>RR:711</strong><br>3/30/14<br>17:15</p><img src="275.png" style="padding-top:16px; padding-left:10px; width:50px; height:50px" class="ui-li-thumb"><h3 class="ui-li-heading">I-275 NB</h3><p class="ui-li-desc"><strong>At The Hump</strong></p><p class="ui-li-desc"></p><div style="color:#FF9900">Disabled Vehicle</div><p class="ui-li-desc"></p></li><li id="li1" onclick="doArrival(381089,&quot;Disabled Vehicle:I-275 SB Before Fletcher Ave&quot;,&quot;705&quot;)" class="ui-li ui-li-static ui-btn-up-c ui-li-has-thumb"><p class="ui-li-aside ui-li-desc"><strong>Evt: 381089<br>RR:705</strong><br>3/30/14<br>17:33</p><img src="275.png" style="padding-top:16px; padding-left:10px; width:50px; height:50px" class="ui-li-thumb"><h3 class="ui-li-heading">I-275 SB</h3><p class="ui-li-desc"><strong>Before Fletcher Ave</strong></p><p class="ui-li-desc"></p><div style="color:#FF9900">Disabled Vehicle</div><p class="ui-li-desc"></p></li>-->
+               
+
+
+            </ul>
+        </div>
+
+        <!-- Map -->    
+        <div class="col-sm-8">
+          <div class="panel-group panel-group-map" id="accordion2">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2">
+                  
+                  </a>  <button id="Button2" onclick="showNewIncident()" type="button" class="btn btn-primary btn-lg btn-fixed-lg">Enter Incident</button><button id="Button7" onclick="removeLocationMarker()" type="button" class="btn btn-primary btn-lg btn-fixed-lg">remove</button>
+                </h4>&nbsp;&nbsp; Lat:<span id="latitude"></span>&nbsp;&nbsp; Long:<span id="longitude"></span>
+              </div>
+              <div id="collapseOne2" class="panel-collapse collapse in">
+                <div id="mapPanel" class="panel-body">
+                   
+                 <!-- <div id="mapDiv"></div>-->
+   <!--<p id = 'mapdiv'></p>-->
+                   <div id="map-canvas"></div>      
+        <button style="display:none" onclick="stopWatch()">
+
+        </button><button id="Button5" onclick="getLocateIncidentsCall()" style="display:none"  type="button" class="btn btn-primary btn-lg btn-fixed-lg">Show Incidents</button><button id="Button6" onclick="getUnitsInField()" style="display:none"  type="button" class="btn btn-primary btn-lg btn-fixed-lg">Show Units</button>
+    <div id="crosshair"></div>
+                    <div id="locationTimerCaption"></div>
+                       <div id="incidentTimerCaption"></div>
+                  <div id="unitsTimerCaption"></div>
+                  <br />
+                    	<div class="output" id="output"></div>
+	
+	<div class="geo_controls">
+		<button id="geo_start_stop">
+			Start
+		</button> 	
+        
+     <div id="txt_unitId"></div>
+         <div id="txt_lat"></div>
+         <div id="txt_long"></div>
+         <div id="txt_accuracy"></div>
+         <div id="txt_min_speed"></div>
+         <div id="txt_max_speed"></div>
+	</div>
+                    <br />
+                 
+  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+   
+          </div>
+        </div>
+
+        <!-- <div id="mapDiv"></div> -->
+     
+
+    </div><!-- /.container -->
+
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+
+    <script>
+
+
+        </script>
+       <script src="scripts/timers.js"></script>
+        <script src="scripts/index.js"></script>
+
+
+      
+
+       
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="container">
+        <div class="navbar-header">
+
+          <a class="navbar-brand" href="webmap.html"><img class="navbar-brand-image" src="images/brand.png">Bootstrap Map JS</a>
+        </div>
+        <div class="collapse navbar-collapse">
+ 
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+
+
+
+  </body>
+</html>
