@@ -110,7 +110,7 @@ function showNewIncident() {
 function doInitialize() {
     //geoloc();
 
-    DoLocationTimer(15000);
+    DoLocationTimer(30000);
 
  
     //DoLocationTimer(30000);
